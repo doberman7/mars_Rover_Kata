@@ -11,6 +11,7 @@ let rover = {
   direction: "N",
   //         [x,y]
   position: [0, 0],
+  travelLog: []
 };
 
 // ======================
@@ -112,6 +113,8 @@ let commands = (strings) => {
 
     switch (stringsMin[variable]) {
       case 'f':
+        const posF = rover.position;
+        rover.tra
         moveForward(rover);
         break;
       case 'b':
