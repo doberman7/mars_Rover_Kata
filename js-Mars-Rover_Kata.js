@@ -65,19 +65,19 @@ function moveForward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
       rover.position[1]++;
-      log("Rover is now facing North at "+ rover.position);
+      log("Rover is now facing North moving Forward to "+ rover.position);
       break;
     case 'E'://If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       rover.position[0]++;
-      log("Rover is now facing East at "+ rover.position);
+      log("Rover is now facing East moving Forward to "+ rover.position);
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
       rover.position[1]--;
-      log("Rover is now facing South at "+ rover.position);
+      log("Rover is now facing South moving Forward to "+ rover.position);
       break;
     case 'W': //if the rover is facing west and moves forward, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing West at "+ rover.position);
+      log("Rover is now facing West moving Forward to "+ rover.position);
       break;
   }
 };
@@ -87,37 +87,66 @@ function moveBackward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves backwards, we would deacrease the rover’s y by 1.
       rover.position[1]--;
-      log(" Rover is now facing North at "+ rover.position);
+      log(" Rover is now facing North moving backwards to "+ rover.position);
       break;
     case 'E'://If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing East at "+ rover.position);
+      log("Rover is now facing East moving backwards to "+ rover.position);
       break;
     case 'S': //If the rover is facing south and moves backwards, we would increase the y by 1.
       rover.position[1]++;
-      log("Rover is now facing South at "+ rover.position);
+      log("Rover is now facing South moving backwards to "+ rover.position);
       break;
     case 'W': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
       rover.position[0]++;
-      log("Rover is now facing West at "+ rover.position);
+      log("Rover is now facing West moving backwards to "+ rover.position);
       break;
   }
 
 };
 
-let commands = (strings) => {
+// let commands = (strings) => {
+//   let stringsMin = strings.toLowerCase();
+//
+//   for (var variable in stringsMin) {
+//
+//
+//     switch (stringsMin[variable]) {
+//       case 'f':
+//         const posF = rover.position;
+//         rover.travelLog.push(posF);
+//         moveForward(rover);
+//         break;
+//       case 'b':
+//         const posB = rover.position;
+//         rover.travelLog.push(posB);
+//         moveBackward(rover);
+//         break;
+//       case 'l':
+//         turnLeft(rover);
+//         break;
+//       case 'r':
+//         break;
+//     }
+//
+//   }
+//
+// };
+
+function commands(strings) {
   let stringsMin = strings.toLowerCase();
-
+  log(rover)
+  log(rover.travelLog);
   for (var variable in stringsMin) {
-
-
     switch (stringsMin[variable]) {
       case 'f':
         const posF = rover.position;
-        rover.tra
+        rover.travelLog.push(posF);
         moveForward(rover);
         break;
       case 'b':
+        const posB = rover.position;
+        rover.travelLog.push(posB);
         moveBackward(rover);
         break;
       case 'l':
@@ -135,4 +164,5 @@ let commands = (strings) => {
 // moveForward(rover);
 // moveBackward(rover);
 // commands(`rffrfflfrff`);
-commands(`rlfb`);
+commands(`rlfbrlfb`);
+log(rover)
