@@ -100,7 +100,32 @@ function moveBackward(rover) {
 
 };
 
+let commands = (strings) => {
+  let stringsMin = strings.toLowerCase();
+
+  for (var variable in stringsMin) {
+
+
+    switch (stringsMin[variable]) {
+      case 'f':
+        log("forward");
+        break;
+      case 'b':
+        log("backward");
+        break;
+      case 'l':
+        log("left");
+        break;
+      case 'r': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
+        log("rigth");
+        break;
+    }
+
+  }
+
+};
 
 // turnLeft(rover);
 // moveForward(rover);
-moveBackward(rover);
+// moveBackward(rover);
+commands(`rffrfflfrff`);
