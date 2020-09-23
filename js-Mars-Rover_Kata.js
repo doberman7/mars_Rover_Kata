@@ -15,10 +15,6 @@ let rover = {
 
 // ======================
 
-// const moveRoover = () => {
-//
-// };
-
 function turnLeft(rover) {
   log('turnLeft was called!');
   switch (rover.direction) {
@@ -41,10 +37,24 @@ function turnLeft(rover) {
   }
 };
 
-// function turnRight(rover) {
-//   console.log('turnRight was called!');
-// };
-//
+function turnRight(rover) {
+  // console.log('turnRight was called!');
+  switch (rover.direction) {
+    case 'N':
+      log(" Rover is now facing East");
+      break;
+    case 'E':
+      log("Rover is now facing South");
+      break;
+    case 'S':
+      log("Rover is now facing West");
+      break;
+    case 'W':
+      log("Rover is now facing North");
+      break;
+  }
+};
+
 function moveForward(rover) {
   // log('moveForward was called');
   switch (rover.direction) {
