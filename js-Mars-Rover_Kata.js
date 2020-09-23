@@ -108,16 +108,20 @@ let commands = (strings) => {
 
     switch (stringsMin[variable]) {
       case 'f':
-        log("forward");
+        // log("forward");
+        moveForward(rover);
         break;
       case 'b':
-        log("backward");
+        // log("backward");
+        moveBackward(rover);
         break;
       case 'l':
-        log("left");
+        // log("left");
+        turnLeft(rover);
         break;
       case 'r': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
-        log("rigth");
+        // log("rigth");
+        turnRight(rover);
         break;
     }
 
