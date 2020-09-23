@@ -20,19 +20,19 @@ function turnLeft(rover) {
   switch (rover.direction) {
     case 'N':
       rover.direction="W";
-      log("Rover is now facing West");
+      // log("Rover is now facing West");
       break;
     case 'E':
       rover.direction="N";
-      log("Rover is now facing North");
+      // log("Rover is now facing North");
       break;
     case 'S':
       rover.direction="E";
-      log("Rover is now facing East");
+      // log("Rover is now facing East");
       break;
     case 'W':
       rover.direction="S";
-      log("Rover is now facing South");
+      // log("Rover is now facing South");
       break;
   }
 };
@@ -41,16 +41,20 @@ function turnRight(rover) {
   // console.log('turnRight was called!');
   switch (rover.direction) {
     case 'N':
-      log("Rover is now facing East");
+      rover.direction="E";
+      // log("Rover is now facing East");
       break;
     case 'E':
-      log("Rover is now facing South");
+      rover.direction="S";
+      // log("Rover is now facing South");
       break;
     case 'S':
-      log("Rover is now facing West");
+      rover.direction="W";
+      // log("Rover is now facing West");
       break;
     case 'W':
-      log("Rover is now facing North");
+      rover.direction="N";
+      // log("Rover is now facing North");
       break;
   }
 };
@@ -108,20 +112,15 @@ let commands = (strings) => {
 
     switch (stringsMin[variable]) {
       case 'f':
-        // log("forward");
         moveForward(rover);
         break;
       case 'b':
-        // log("backward");
         moveBackward(rover);
         break;
       case 'l':
-        // log("left");
         turnLeft(rover);
         break;
-      case 'r': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
-        // log("rigth");
-        turnRight(rover);
+      case 'r':
         break;
     }
 
@@ -132,4 +131,5 @@ let commands = (strings) => {
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
-commands(`rffrfflfrff`);
+// commands(`rffrfflfrff`);
+commands(`rlfb`);
