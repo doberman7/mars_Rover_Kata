@@ -8,7 +8,7 @@ let log = (print) => {
 
 // Rover object goes here:
 let rover = {
-  direction: "W",
+  direction: "N",
   //         [x,y]
   position: [0, 0],
 };
@@ -16,23 +16,23 @@ let rover = {
 // ======================
 
 function turnLeft(rover) {
-  log('turnLeft was called!');
+  // log('turnLeft was called!');
   switch (rover.direction) {
     case 'N':
-      log(" Rover is now facing West");
-      // rover.position[0]++;
+      rover.direction="W";
+      log("Rover is now facing West");
       break;
     case 'E':
+      rover.direction="N";
       log("Rover is now facing North");
-      // rover.position[1]++;
       break;
     case 'S':
+      rover.direction="E";
       log("Rover is now facing East");
-      // rover.position[0]--;
       break;
     case 'W':
+      rover.direction="S";
       log("Rover is now facing South");
-      // rover.position[1]--;
       break;
   }
 };
@@ -41,7 +41,7 @@ function turnRight(rover) {
   // console.log('turnRight was called!');
   switch (rover.direction) {
     case 'N':
-      log(" Rover is now facing East");
+      log("Rover is now facing East");
       break;
     case 'E':
       log("Rover is now facing South");
@@ -60,7 +60,7 @@ function moveForward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
       rover.position[1]++;
-      log(" Rover is now facing North at "+ rover.position);
+      log("Rover is now facing North at "+ rover.position);
       break;
     case 'E'://If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       rover.position[0]++;
