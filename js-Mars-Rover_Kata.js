@@ -8,7 +8,7 @@ let log = (print) => {
 
 // Rover object goes here:
 let rover = {
-  direction: "N",
+  direction: "E",
   //         [x,y]
   position: [0, 0],
   travelLog: []
@@ -135,34 +135,39 @@ function moveBackward(rover) {
 
 function commands(strings) {
   let stringsMin = strings.toLowerCase();
-  log(rover)
-  log(rover.travelLog);
+  const travelLogAry = [];
   for (var variable in stringsMin) {
+    // log(rover)
     switch (stringsMin[variable]) {
       case 'f':
+      moveForward(rover);
         const posF = rover.position;
-        rover.travelLog.push(posF);
-        moveForward(rover);
+        travelLogAry.push(posF);
+        console.log(travelLogAry);
+        // log(posF)
         break;
       case 'b':
         const posB = rover.position;
-        rover.travelLog.push(posB);
         moveBackward(rover);
+        travelLogAry.push([1,2]);
+        console.log(travelLogAry);
+
+        // console.log(posB);
         break;
       case 'l':
+
         turnLeft(rover);
         break;
       case 'r':
+        turnRight(rover);
         break;
     }
-
   }
-
 };
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
 // commands(`rffrfflfrff`);
-commands(`rlfbrlfb`);
+commands(`fb`);
 log(rover)
