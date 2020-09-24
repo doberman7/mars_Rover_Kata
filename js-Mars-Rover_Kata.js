@@ -61,15 +61,18 @@ function turnRight(rover) {
 };
 
 function moveForward(rover) {
-  // log('moveForward was called');
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
       rover.position[1]++;
       log("Rover is now facing North moving Forward to "+ rover.position);
       break;
     case 'E'://If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
+      // log("------------------")
+      // log(rover.travelLog);
+      // log("------------------")
       rover.position[0]++;
       log("Rover is now facing East moving Forward to "+ rover.position);
+
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
       rover.position[1]--;
@@ -105,69 +108,40 @@ function moveBackward(rover) {
 
 };
 
-// let commands = (strings) => {
-//   let stringsMin = strings.toLowerCase();
-//
-//   for (var variable in stringsMin) {
-//
-//
-//     switch (stringsMin[variable]) {
-//       case 'f':
-//         const posF = rover.position;
-//         rover.travelLog.push(posF);
-//         moveForward(rover);
-//         break;
-//       case 'b':
-//         const posB = rover.position;
-//         rover.travelLog.push(posB);
-//         moveBackward(rover);
-//         break;
-//       case 'l':
-//         turnLeft(rover);
-//         break;
-//       case 'r':
-//         break;
-//     }
-//
-//   }
-//
-// };
-
 function commands(strings) {
   let stringsMin = strings.toLowerCase();
-  const travelLogAry = [];
   for (var variable in stringsMin) {
-    // log(rover)
     switch (stringsMin[variable]) {
       case 'f':
-      moveForward(rover);
-        const posF = rover.position;
-        travelLogAry.push(posF);
-        console.log(travelLogAry);
-        // log(posF)
+        moveForward(rover);
+        // TEST
+        log("ary  antes de push");
+        log(rover.travelLog);
+        log("position---->"+rover.position);
+        // rover.travelLog.push(rover.position);
+        rover.travelLog.push([rover.position[0], rover.position[1]]);
+        log("travelLog after push:");
+        log(rover.travelLog);
         break;
       case 'b':
-        const posB = rover.position;
         moveBackward(rover);
-        travelLogAry.push([1,2]);
-        console.log(travelLogAry);
 
-        // console.log(posB);
         break;
       case 'l':
-
         turnLeft(rover);
         break;
       case 'r':
         turnRight(rover);
         break;
-    }
-  }
+    };
+
+
+    // log(rover)
+  };
 };
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
 // commands(`rffrfflfrff`);
-commands(`fb`);
-log(rover)
+commands(`ff`);
