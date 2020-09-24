@@ -118,8 +118,9 @@ function commands(strings) {
         log("ary  antes de push");
         log(rover.travelLog);
         log("position---->"+rover.position);
-        // rover.travelLog.push(rover.position);
-        rover.travelLog.push([rover.position[0], rover.position[1]]);
+        let positions = JSON.parse(JSON.stringify(rover.position));
+        rover.travelLog.push(positions);
+        // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
         log("travelLog after push:");
         log(rover.travelLog);
         break;
@@ -143,5 +144,5 @@ function commands(strings) {
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
-// commands(`rffrfflfrff`);
-commands(`ff`);
+commands(`rffrfflfrff`);
+// commands(`ff`);
