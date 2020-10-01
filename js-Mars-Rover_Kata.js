@@ -11,7 +11,7 @@ let rover = {
   direction: "E",
   //         [x,y]
   position: [0, 0],
-  travelLog: []
+  travelLog: [[0,0]]
 };
 
 // ======================
@@ -134,15 +134,22 @@ function commands(strings) {
 };
 
 function enforceBoundaries(grids) {
-  let xAxisOnGrid = grids[grids.length - 1][0] ;
-  let yAxisOnGrid = grids[grids.length - 1][1] ;
-  log(yAxisOnGrid);
-  // log(lastAryOnTravelog[0]);
-  // log(lastAryOnTravelog[1]);
+  // console.log(grids[grids.length - 1]);
+  // let xAxis = grids[grids.length - 1][0] ;
+  // let yAxis = grids[grids.length - 1][1] ;
+  // console.log(yAxis);
+  let lastAry = grids[grids.length - 1];
+  console.log(lastAry);
+  // for (var i = 0; i < lastAry.length - 1; i++) {
+  //   console.log(lastAry[i]);
+  // }
+
+
+
 }
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
-// commands(`rffrfflfrff`);
-commands(`ff`);
+commands(`rffrfflfrff`);
+// commands(`ff`);
