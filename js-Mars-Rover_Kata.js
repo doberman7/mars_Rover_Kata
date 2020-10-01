@@ -105,7 +105,6 @@ function moveBackward(rover) {
       log("Rover is now facing West moving backwards to "+ rover.position);
       break;
   }
-
 };
 
 function commands(strings) {
@@ -114,19 +113,14 @@ function commands(strings) {
     switch (stringsMin[variable]) {
       case 'f':
         moveForward(rover);
-        // TEST
-        log("ary  antes de push");
-        log(rover.travelLog);
-        log("position---->"+rover.position);
-        let positions = JSON.parse(JSON.stringify(rover.position));
-        rover.travelLog.push(positions);
+        let positionsForward = JSON.parse(JSON.stringify(rover.position));
+        rover.travelLog.push(positionsForward);
         // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
-        log("travelLog after push:");
-        log(rover.travelLog);
         break;
       case 'b':
         moveBackward(rover);
-
+        let positionsBackward = JSON.parse(JSON.stringify(rover.position));
+        rover.travelLog.push(positionsBackward);
         break;
       case 'l':
         turnLeft(rover);
@@ -135,14 +129,16 @@ function commands(strings) {
         turnRight(rover);
         break;
     };
-
-
-    // log(rover)
+    log(rover)
   };
 };
+
+function enforceBoundaries() {
+
+}
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
 commands(`rffrfflfrff`);
-// commands(`ff`);
+// commands(`rrfff`);
