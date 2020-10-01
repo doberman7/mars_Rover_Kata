@@ -139,10 +139,9 @@ function enforceBoundaries(grids) {
   // let yAxis = grids[grids.length - 1][1] ;
   // console.log(yAxis);
   let lastAry = grids[grids.length - 1];
-  console.log(lastAry);
-  // for (var i = 0; i < lastAry.length - 1; i++) {
-  //   console.log(lastAry[i]);
-  // }
+  for (var i = 0; i < lastAry.length - 1; i++) {
+    console.log(lastAry[i]);
+  }
 
 
 
@@ -151,5 +150,6 @@ function enforceBoundaries(grids) {
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
-commands(`rffrfflfrff`);
-// commands(`ff`);
+// commands(`rffrfflfrff`);
+commands(`lfffffffffffffff`);
+// commands(`bb`);
