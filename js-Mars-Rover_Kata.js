@@ -129,16 +129,17 @@ function commands(strings) {
         turnRight(rover);
         break;
     };
-    log(rover)
+    enforceBoundaries(rover.travelLog);
   };
 };
 
-function enforceBoundaries() {
-
+function enforceBoundaries(grids) {
+  let lastAryOnTravelog = grids[grids.length - 1] ;
+  log(lastAryOnTravelog);
 }
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
-commands(`rffrfflfrff`);
-// commands(`rrfff`);
+// commands(`rffrfflfrff`);
+commands(`bb`);
