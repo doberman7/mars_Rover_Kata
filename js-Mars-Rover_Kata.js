@@ -134,12 +134,15 @@ function commands(strings) {
 };
 
 function enforceBoundaries(grids) {
-  let lastAryOnTravelog = grids[grids.length - 1] ;
-  log(lastAryOnTravelog);
+  let xAxisOnGrid = grids[grids.length - 1][0] ;
+  let yAxisOnGrid = grids[grids.length - 1][1] ;
+  log(yAxisOnGrid);
+  // log(lastAryOnTravelog[0]);
+  // log(lastAryOnTravelog[1]);
 }
 
 // turnLeft(rover);
 // moveForward(rover);
 // moveBackward(rover);
 // commands(`rffrfflfrff`);
-commands(`bb`);
+commands(`ff`);
