@@ -129,27 +129,23 @@ function commands(strings) {
         turnRight(rover);
         break;
     };
-    enforceBoundaries(rover.travelLog);
+    // enforceBoundaries(rover.travelLog);
   };
 };
 
-function enforceBoundaries(grids) {
-  // console.log(grids[grids.length - 1]);
-  // let xAxis = grids[grids.length - 1][0] ;
-  // let yAxis = grids[grids.length - 1][1] ;
-  // console.log(yAxis);
-  let lastAry = grids[grids.length - 1];
-  for (var i = 0; i < lastAry.length - 1; i++) {
-    let xAxis = lastAry[i];
-    let yAxis = lastAry[i+1];
-    console.log(xAxis);
-    console.log(yAxis);
-  }
-
-
-
-}
+// function enforceBoundaries(grids) {
+//   // console.log(grids[grids.length - 1]);
+//   // let xAxis = grids[grids.length - 1][0] ;
+//   // let yAxis = grids[grids.length - 1][1] ;
+//   // console.log(yAxis);
+//   let lastAry = grids[grids.length - 1];
+//   for (var i = 0; i < lastAry.length - 1; i++) {
+//     let xAxis = lastAry[i];
+//     let yAxis = lastAry[i+1];
+//     if (xAxis > 10) console.log("your out of the grid");
+//   };
+// };
 
 // commands(`rffrfflfrff`);
 // commands(`lfffffffffffffff`);
-commands(`bbll`);
+commands(`fblr`);
