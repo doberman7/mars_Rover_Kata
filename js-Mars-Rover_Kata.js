@@ -114,10 +114,9 @@ function commands(strings) {
   for (var variable in stringsMin) {
     let xEje = rover.position[0];
     let yEje = rover.position[1];
-    if (xEje < 10 && yEje < 10) {
+    if (xEje < 10 && yEje < 10) {//if the x and y axis are smaller than the grid proced
       switch (stringsMin[variable]) {
         case 'f':
-          // enforceBoundaries(rover.travelLog);//limit movement inside grid before mov
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
@@ -139,21 +138,7 @@ function commands(strings) {
   };
 };
 
-function enforceBoundaries(grids) {
-  let lastAry = grids[grids.length - 1]; //last position known
-  for (var i = 0; i < lastAry.length - 1; i++) {
-    let xAxis = lastAry[i]; //obtain x axis
-    let yAxis = lastAry[i + 1]; //obtain y axis
-    if (xAxis >= 10) { //if x is greater or equal than grid
-      rover.position = lastAry;
-      console.log("your out of the X grid returning to last know position ");
-    };
-    if (xAxis < 0) console.log("your out of the X grid");
-    if (yAxis > 10) console.log("your out of the Y grid");
-    if (yAxis < 0) console.log("your out of the Y grid");
 
-  };
-};
 
 // commands(`rffrfflfrff`);
 // commands(`lfffffffffffffff`);
