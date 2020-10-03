@@ -112,9 +112,15 @@ function moveBackward(rover) {
 function commands(strings) {
   let stringsMin = strings.toLowerCase();
   for (var variable in stringsMin) {
-    let xEje = rover.position[0];
-    let yEje = rover.position[1];
-    if (xEje < 10 && yEje < 10) {//if the x and y axis are smaller than the grid proced
+    let xAxis = rover.position[0];
+    let yAxis = rover.position[1];
+    if (
+        ((xAxis === 0) && (yAxis < 9))
+      || ((xAxis < 9) && (yAxis === 0))
+      || ((yAxis > 0) && (xAxis > 0) && (yAxis + xAxis <= 18) )) {
+
+
+
       switch (stringsMin[variable]) {
         case 'f':
           moveForward(rover);
@@ -142,4 +148,7 @@ function commands(strings) {
 
 // commands(`rffrfflfrff`);
 // commands(`lfffffffffffffff`);
-commands(`lffffffffffffffff`);
+// commands(`fffffffffffff`);
+// commands(`bbbbbbbbbbbbb`);
+commands(`ffffflffffffffffffff`);
+// commands(`fflf`);
