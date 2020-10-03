@@ -11,7 +11,9 @@ let rover = {
   direction: "E",
   //         [x,y]
   position: [0, 0],
-  travelLog: [[0,0]]
+  travelLog: [
+    [0, 0]
+  ]
 };
 
 // ======================
@@ -20,19 +22,19 @@ function turnLeft(rover) {
   // log('turnLeft was called!');
   switch (rover.direction) {
     case 'N':
-      rover.direction="W";
+      rover.direction = "W";
       // log("Rover is now facing West");
       break;
     case 'E':
-      rover.direction="N";
+      rover.direction = "N";
       // log("Rover is now facing North");
       break;
     case 'S':
-      rover.direction="E";
+      rover.direction = "E";
       // log("Rover is now facing East");
       break;
     case 'W':
-      rover.direction="S";
+      rover.direction = "S";
       // log("Rover is now facing South");
       break;
   }
@@ -42,19 +44,19 @@ function turnRight(rover) {
   // console.log('turnRight was called!');
   switch (rover.direction) {
     case 'N':
-      rover.direction="E";
+      rover.direction = "E";
       // log("Rover is now facing East");
       break;
     case 'E':
-      rover.direction="S";
+      rover.direction = "S";
       // log("Rover is now facing South");
       break;
     case 'S':
-      rover.direction="W";
+      rover.direction = "W";
       // log("Rover is now facing West");
       break;
     case 'W':
-      rover.direction="N";
+      rover.direction = "N";
       // log("Rover is now facing North");
       break;
   }
@@ -64,23 +66,23 @@ function moveForward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
       rover.position[1]++;
-      log("Rover is now facing North moving Forward to "+ rover.position);
+      log("Rover is now facing North moving Forward to " + rover.position);
       break;
-    case 'E'://If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
+    case 'E': //If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       // log("------------------")
       // log(rover.travelLog);
       // log("------------------")
       rover.position[0]++;
-      log("Rover is now facing East moving Forward to "+ rover.position);
+      log("Rover is now facing East moving Forward to " + rover.position);
 
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
       rover.position[1]--;
-      log("Rover is now facing South moving Forward to "+ rover.position);
+      log("Rover is now facing South moving Forward to " + rover.position);
       break;
     case 'W': //if the rover is facing west and moves forward, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing West moving Forward to "+ rover.position);
+      log("Rover is now facing West moving Forward to " + rover.position);
       break;
   }
 };
@@ -90,19 +92,19 @@ function moveBackward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves backwards, we would deacrease the rover’s y by 1.
       rover.position[1]--;
-      log(" Rover is now facing North moving backwards to "+ rover.position);
+      log(" Rover is now facing North moving backwards to " + rover.position);
       break;
-    case 'E'://If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
+    case 'E': //If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing East moving backwards to "+ rover.position);
+      log("Rover is now facing East moving backwards to " + rover.position);
       break;
     case 'S': //If the rover is facing south and moves backwards, we would increase the y by 1.
       rover.position[1]++;
-      log("Rover is now facing South moving backwards to "+ rover.position);
+      log("Rover is now facing South moving backwards to " + rover.position);
       break;
     case 'W': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
       rover.position[0]++;
-      log("Rover is now facing West moving backwards to "+ rover.position);
+      log("Rover is now facing West moving backwards to " + rover.position);
       break;
   }
 };
@@ -110,40 +112,42 @@ function moveBackward(rover) {
 function commands(strings) {
   let stringsMin = strings.toLowerCase();
   for (var variable in stringsMin) {
-    switch (stringsMin[variable]) {
-      case 'f':
-        moveForward(rover);
-        let positionsForward = JSON.parse(JSON.stringify(rover.position));
-        rover.travelLog.push(positionsForward);
-        // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
-        break;
-      case 'b':
-        moveBackward(rover);
-        let positionsBackward = JSON.parse(JSON.stringify(rover.position));
-        rover.travelLog.push(positionsBackward);
-        break;
-      case 'l':
-        turnLeft(rover);
-        break;
-      case 'r':
-        turnRight(rover);
-        break;
+    let xEje = rover.position[0];
+    let yEje = rover.position[1];
+    if (xEje < 10 && yEje < 10) {
+      switch (stringsMin[variable]) {
+        case 'f':
+          // enforceBoundaries(rover.travelLog);//limit movement inside grid before mov
+          moveForward(rover);
+          let positionsForward = JSON.parse(JSON.stringify(rover.position));
+          rover.travelLog.push(positionsForward);
+          // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
+          break;
+        case 'b':
+          moveBackward(rover);
+          let positionsBackward = JSON.parse(JSON.stringify(rover.position));
+          rover.travelLog.push(positionsBackward);
+          break;
+        case 'l':
+          turnLeft(rover);
+          break;
+        case 'r':
+          turnRight(rover);
+          break;
+      };
     };
-    enforceBoundaries(rover.travelLog);
   };
 };
 
 function enforceBoundaries(grids) {
-  // console.log(grids[grids.length - 1]);
-  // let xAxis = grids[grids.length - 1][0] ;
-  // let yAxis = grids[grids.length - 1][1] ;
-  // console.log(yAxis);
-  let lastAry = grids[grids.length - 1];
+  let lastAry = grids[grids.length - 1]; //last position known
   for (var i = 0; i < lastAry.length - 1; i++) {
-    let xAxis = lastAry[i];
-    let yAxis = lastAry[i+1];
-
-    if (xAxis > 10) console.log("your out of the X grid");
+    let xAxis = lastAry[i]; //obtain x axis
+    let yAxis = lastAry[i + 1]; //obtain y axis
+    if (xAxis >= 10) { //if x is greater or equal than grid
+      rover.position = lastAry;
+      console.log("your out of the X grid returning to last know position ");
+    };
     if (xAxis < 0) console.log("your out of the X grid");
     if (yAxis > 10) console.log("your out of the Y grid");
     if (yAxis < 0) console.log("your out of the Y grid");
@@ -153,4 +157,4 @@ function enforceBoundaries(grids) {
 
 // commands(`rffrfflfrff`);
 // commands(`lfffffffffffffff`);
-commands(`lfffffffffffffff`);
+commands(`lffffffffffffffff`);
