@@ -114,31 +114,26 @@ function commands(strings) {
   for (var variable in stringsMin) {
     let xAxis = rover.position[0];
     let yAxis = rover.position[1];
-    if (
-        ((xAxis === 0) && (yAxis < 9))
-      || ((xAxis < 9) && (yAxis === 0))
-      || ((yAxis > 0) && (xAxis > 0) && (yAxis + xAxis <= 18) )) {
-
-
-
-      switch (stringsMin[variable]) {
-        case 'f':
-          moveForward(rover);
-          let positionsForward = JSON.parse(JSON.stringify(rover.position));
-          rover.travelLog.push(positionsForward);
-          // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
-          break;
-        case 'b':
-          moveBackward(rover);
-          let positionsBackward = JSON.parse(JSON.stringify(rover.position));
-          rover.travelLog.push(positionsBackward);
-          break;
-        case 'l':
-          turnLeft(rover);
-          break;
-        case 'r':
-          turnRight(rover);
-          break;
+    if ((xAxis >= 0) && (yAxis <= 9) && (xAxis <= 9) && (yAxis >= 0))// conditions to avoid gout grid
+      {
+        switch (stringsMin[variable]) {
+          case 'f':
+            moveForward(rover);
+            let positionsForward = JSON.parse(JSON.stringify(rover.position));
+            rover.travelLog.push(positionsForward);
+            // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
+            break;
+          case 'b':
+            moveBackward(rover);
+            let positionsBackward = JSON.parse(JSON.stringify(rover.position));
+            rover.travelLog.push(positionsBackward);
+            break;
+          case 'l':
+            turnLeft(rover);
+            break;
+          case 'r':
+            turnRight(rover);
+            break;
       };
     };
   };
@@ -150,5 +145,5 @@ function commands(strings) {
 // commands(`lfffffffffffffff`);
 // commands(`fffffffffffff`);
 // commands(`bbbbbbbbbbbbb`);
-commands(`ffffflffffffffffffff`);
+commands(`ffffflfflfffrfffff`);
 // commands(`fflf`);
