@@ -152,10 +152,20 @@ function cleanComands(command){//function to filter strings
   return filteredCommands;
 };
 
-// commands(`rffrfflfrff`);
-// commands(`lfffffffffffffff`);
-// commands(`fffffffffffff`);
-// commands(`bbbbbbbbbbbbb`);
-// commands(`ffffflfflfffrfffff`);
+let board = [
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
+  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  ']
+]
+console.log(board.join('\n') + '\n\n');
+
+
 // commands(`ffzzzzrblf`);
 commands(`ffz340jaddnvsdjvnsvzzzrblf`);
