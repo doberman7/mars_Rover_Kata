@@ -110,7 +110,10 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-  let stringsMin = strings.toLowerCase();
+
+
+  let stringsMin = cleanComands(strings);//CHANGE this and move cleanComands Here
+
   for (var variable in stringsMin) {
     let xAxis = rover.position[0];
     let yAxis = rover.position[1];
@@ -139,11 +142,19 @@ function commands(strings) {
   };
 };
 
-
+function cleanComands(command){
+  command.toLowerCase();//make minusc the command
+  let comandSplited = command.split("");//obtain ary of commands
+  let usefulStrings = ["f","l","r","b"];//define valid comands
+  let filteredCommands = comandSplited.filter(function(e)  {
+    return usefulStrings.indexOf(e) > -1;
+    });
+    console.log(filteredCommands);
+};
 
 // commands(`rffrfflfrff`);
 // commands(`lfffffffffffffff`);
 // commands(`fffffffffffff`);
 // commands(`bbbbbbbbbbbbb`);
-commands(`ffffflfflfffrfffff`);
-// commands(`fflf`);
+// commands(`ffffflfflfffrfffff`);
+commands(`ffzzzzrblf`);
