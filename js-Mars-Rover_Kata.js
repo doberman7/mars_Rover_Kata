@@ -121,14 +121,15 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-  let stringsMin = cleanComands(strings); //CHANGE this and move cleanComands Here
-  for (var variable in stringsMin) {
+  let cleanedStrings = cleanComands(strings); //CHANGE this and move cleanComands Here
+  for (var i in cleanedStrings) {
+
     let xAxis = rover.position[0];
     let yAxis = rover.position[1];
 
     if ((xAxis >= 0) && (yAxis <= 9) && (xAxis <= 9) && (yAxis >= 0)) // conditions to avoid gout grid
     {
-      switch (stringsMin[variable]) {
+      switch (cleanedStrings[i]) {
         case 'f':
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
@@ -170,7 +171,8 @@ function cleanComands(command) { //function to filter strings
    let xEje = rover.position[0];
    let yEje = rover.position[1];
    console.log(xEje,yEje);
-  // board[4][4] = board[6][4]
+
+   board[xEje][yEje] = "R";
   console.log(board.join('\n') + '\n\n');
 
 };
