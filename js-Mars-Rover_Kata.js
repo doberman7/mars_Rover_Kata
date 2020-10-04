@@ -113,7 +113,7 @@ function commands(strings) {
 
 
   let stringsMin = cleanComands(strings);//CHANGE this and move cleanComands Here
-
+  console.log(stringsMin);
   for (var variable in stringsMin) {
     let xAxis = rover.position[0];
     let yAxis = rover.position[1];
@@ -142,14 +142,14 @@ function commands(strings) {
   };
 };
 
-function cleanComands(command){
+function cleanComands(command){//function to filter strings
   command.toLowerCase();//make minusc the command
   let comandSplited = command.split("");//obtain ary of commands
   let usefulStrings = ["f","l","r","b"];//define valid comands
-  let filteredCommands = comandSplited.filter(function(e)  {
-    return usefulStrings.indexOf(e) > -1;
+  let filteredCommands = comandSplited.filter((letter) => {//assign filtered letters of the commands
+    return usefulStrings.indexOf(letter) > -1;//obtain index of letter found in the usefulStrings Ary
     });
-    console.log(filteredCommands);
+  return filteredCommands;
 };
 
 // commands(`rffrfflfrff`);
@@ -157,4 +157,5 @@ function cleanComands(command){
 // commands(`fffffffffffff`);
 // commands(`bbbbbbbbbbbbb`);
 // commands(`ffffflfflfffrfffff`);
-commands(`ffzzzzrblf`);
+// commands(`ffzzzzrblf`);
+commands(`ffz340jaddnvsdjvnsvzzzrblf`);
