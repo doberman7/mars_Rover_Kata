@@ -15,7 +15,18 @@ let rover = {
     [0, 0]
   ]
 };
-
+let board = [
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+  [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+]
 // ======================
 
 function turnLeft(rover) {
@@ -110,62 +121,63 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-
-
-  let stringsMin = cleanComands(strings);//CHANGE this and move cleanComands Here
-  console.log(stringsMin);
+  let stringsMin = cleanComands(strings); //CHANGE this and move cleanComands Here
   for (var variable in stringsMin) {
     let xAxis = rover.position[0];
     let yAxis = rover.position[1];
-    if ((xAxis >= 0) && (yAxis <= 9) && (xAxis <= 9) && (yAxis >= 0))// conditions to avoid gout grid
-      {
-        switch (stringsMin[variable]) {
-          case 'f':
-            moveForward(rover);
-            let positionsForward = JSON.parse(JSON.stringify(rover.position));
-            rover.travelLog.push(positionsForward);
-            // rover.travelLog.push([rover.position[0], rover.position[1]]);//this versions given on slack
-            break;
-          case 'b':
-            moveBackward(rover);
-            let positionsBackward = JSON.parse(JSON.stringify(rover.position));
-            rover.travelLog.push(positionsBackward);
-            break;
-          case 'l':
-            turnLeft(rover);
-            break;
-          case 'r':
-            turnRight(rover);
-            break;
+
+    if ((xAxis >= 0) && (yAxis <= 9) && (xAxis <= 9) && (yAxis >= 0)) // conditions to avoid gout grid
+    {
+      switch (stringsMin[variable]) {
+        case 'f':
+          moveForward(rover);
+          let positionsForward = JSON.parse(JSON.stringify(rover.position));
+          rover.travelLog.push(positionsForward);
+          printMovement();
+          // console.log(board.join('\n') + '\n\n');
+          break;
+        case 'b':
+          moveBackward(rover);
+          let positionsBackward = JSON.parse(JSON.stringify(rover.position));
+          rover.travelLog.push(positionsBackward);
+          printMovement();
+
+          // console.log(board.join('\n') + '\n\n');
+
+          break;
+        case 'l':
+          turnLeft(rover);
+          break;
+        case 'r':
+          turnRight(rover);
+          break;
       };
     };
   };
 };
 
-function cleanComands(command){//function to filter strings
-  command.toLowerCase();//make minusc the command
-  let comandSplited = command.split("");//obtain ary of commands
-  let usefulStrings = ["f","l","r","b"];//define valid comands
-  let filteredCommands = comandSplited.filter((letter) => {//assign filtered letters of the commands
-    return usefulStrings.indexOf(letter) > -1;//obtain index of letter found in the usefulStrings Ary
-    });
+function cleanComands(command) { //function to filter strings
+  command.toLowerCase(); //make minusc the command
+  let comandSplited = command.split(""); //obtain ary of commands
+  let usefulStrings = ["f", "l", "r", "b"]; //define valid comands
+  let filteredCommands = comandSplited.filter((letter) => { //assign filtered letters of the commands
+    return usefulStrings.indexOf(letter) > -1; //obtain index of letter found in the usefulStrings Ary
+  });
   return filteredCommands;
 };
 
-let board = [
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  '],
-  [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','  ']
-]
-console.log(board.join('\n') + '\n\n');
+ printMovement = () => {
+   let xEje = rover.position[0];
+   let yEje = rover.position[1];
+   console.log(xEje,yEje);
+  // board[4][4] = board[6][4]
+  console.log(board.join('\n') + '\n\n');
+
+};
+
+
 
 
 // commands(`ffzzzzrblf`);
-commands(`ffz340jaddnvsdjvnsvzzzrblf`);
+// commands(`ffz340jaddnvsdjvnsvzzzrblf`);
+commands(`flfrrb`);
