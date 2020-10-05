@@ -171,22 +171,21 @@ function cleanComands(command) { //function to filter strings
    let xEje = rover.position[0];
    let yEje = rover.position[1];
    console.log(xEje,yEje);
-   // let blankedCordenates = rover.travelLog.filter((cordenates) => {
-   //   console.log("Cordenates: "+cordenates);
-   //   let cordenateX = cordenates[0];
-   //   let cordenateY = cordenates[1];
-   //
-   //   if ((xEje === cordenateX) && (yEje === cordenateY)) {
-   //
-   //     console.log("X: " + xEje + " " + cordenateX + " -");
-   //     console.log("Y: " + yEje + " " + cordenateY);
-   //     board[xEje][yEje] = "s";
-   //
-   //   };
-   //
-   //
-   // })
-   board[xEje][yEje] = "R";
+   let blankedCordenates = rover.travelLog.filter((cordenates) => {
+     console.log("Cordenates: "+cordenates);
+     let cordenateX = cordenates[0];
+     let cordenateY = cordenates[1];
+
+     if ((xEje === cordenateX) && (yEje === cordenateY)) {
+
+       console.log("X: " + xEje + " " + cordenateX + " -");
+       console.log("Y: " + yEje + " " + cordenateY);
+
+     };
+
+     board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
+
+   })
   console.log(board.join('\n') + '\n\n');
 
 };
@@ -196,4 +195,4 @@ function cleanComands(command) { //function to filter strings
 
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
-commands(`flfrrb`);
+commands(`fff`);
