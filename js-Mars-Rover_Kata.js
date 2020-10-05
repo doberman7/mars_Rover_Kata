@@ -171,7 +171,21 @@ function cleanComands(command) { //function to filter strings
    let xEje = rover.position[0];
    let yEje = rover.position[1];
    console.log(xEje,yEje);
-
+   // let blankedCordenates = rover.travelLog.filter((cordenates) => {
+   //   console.log("Cordenates: "+cordenates);
+   //   let cordenateX = cordenates[0];
+   //   let cordenateY = cordenates[1];
+   //
+   //   if ((xEje === cordenateX) && (yEje === cordenateY)) {
+   //
+   //     console.log("X: " + xEje + " " + cordenateX + " -");
+   //     console.log("Y: " + yEje + " " + cordenateY);
+   //     board[xEje][yEje] = "s";
+   //
+   //   };
+   //
+   //
+   // })
    board[xEje][yEje] = "R";
   console.log(board.join('\n') + '\n\n');
 
