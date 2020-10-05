@@ -27,6 +27,7 @@ let board = [
   [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
   [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 ]
+// console.log("This rover versions default view its East, considering that the increase of value of the vectors X and Y make rover move down instead of up, theres no use in rover to look North cuz he cant move freely in tthis scenario ");
 // ======================
 
 function turnLeft(rover) {
@@ -121,6 +122,8 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
+  log("Rover first position loking East")
+  printMovement();
   let cleanedStrings = cleanComands(strings); //CHANGE this and move cleanComands Here
   for (var i in cleanedStrings) {
 
@@ -131,6 +134,7 @@ function commands(strings) {
     {
       switch (cleanedStrings[i]) {
         case 'f':
+          console.log("Forward");
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
@@ -138,19 +142,22 @@ function commands(strings) {
           // console.log(board.join('\n') + '\n\n');
           break;
         case 'b':
+          console.log("Back");
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
           printMovement();
-
           // console.log(board.join('\n') + '\n\n');
-
           break;
         case 'l':
+          console.log("Left");
           turnLeft(rover);
+          printMovement();
           break;
         case 'r':
+          log("Right")
           turnRight(rover);
+          printMovement();
           break;
       };
     };
@@ -170,22 +177,23 @@ function cleanComands(command) { //function to filter strings
  printMovement = () => {
    let xEje = rover.position[0];
    let yEje = rover.position[1];
-   console.log(xEje,yEje);
-   let blankedCordenates = rover.travelLog.filter((cordenates) => {
-     console.log("Cordenates: "+cordenates);
-     let cordenateX = cordenates[0];
-     let cordenateY = cordenates[1];
+   // console.log(xEje,yEje);
+   console.log(rover.position);
+   board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
 
-     if ((xEje === cordenateX) && (yEje === cordenateY)) {
-
-       console.log("X: " + xEje + " " + cordenateX + " -");
-       console.log("Y: " + yEje + " " + cordenateY);
-
-     };
-
-     board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
-
-   })
+   // let blankedCordenates = rover.travelLog.filter((cordenates) => {
+   //   // console.log("Cordenates: "+cordenates);
+   //   let cordenateX = cordenates[0];
+   //   let cordenateY = cordenates[1];
+   //   if ((xEje !== cordenateX) && (yEje !== cordenateY)) {
+   //
+   //     console.log("X: " + xEje + " " + cordenateX + " -");
+   //     console.log("Y: " + yEje + " " + cordenateY);
+   //     // board[yEje][xEje] = "X∫";
+   //   } else{};
+   //
+   //
+   // })
   console.log(board.join('\n') + '\n\n');
 
 };
@@ -195,4 +203,4 @@ function cleanComands(command) { //function to filter strings
 
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
-commands(`fff`);
+commands(`fffflffrf`);
