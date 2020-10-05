@@ -122,7 +122,7 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-  log("Rover first position loking East")
+  log("Rover first position is looking EAST")
   printMovement();
   let cleanedStrings = cleanComands(strings); //CHANGE this and move cleanComands Here
   for (var i in cleanedStrings) {
@@ -134,7 +134,7 @@ function commands(strings) {
     {
       switch (cleanedStrings[i]) {
         case 'f':
-          console.log("Forward");
+          console.log("FORWARD");
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
@@ -142,7 +142,7 @@ function commands(strings) {
           // console.log(board.join('\n') + '\n\n');
           break;
         case 'b':
-          console.log("Back");
+          console.log("BACK");
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
@@ -150,12 +150,12 @@ function commands(strings) {
           // console.log(board.join('\n') + '\n\n');
           break;
         case 'l':
-          console.log("Left");
+          console.log("LEFT");
           turnLeft(rover);
           printMovement();
           break;
         case 'r':
-          log("Right")
+          log("RIGHT")
           turnRight(rover);
           printMovement();
           break;
@@ -180,6 +180,7 @@ function cleanComands(command) { //function to filter strings
    // console.log(xEje,yEje);
    console.log(rover.position);
    board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
+   console.log(rover.direction);
 
    // let blankedCordenates = rover.travelLog.filter((cordenates) => {
    //   // console.log("Cordenates: "+cordenates);
