@@ -122,8 +122,8 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-  log("Rover first position is looking EAST")
-  printMovement();
+  // log("Rover first position is looking EAST")
+  // printMovement();
   let cleanedStrings = cleanComands(strings); //CHANGE this and move cleanComands Here
   for (var i in cleanedStrings) {
 
@@ -138,7 +138,7 @@ function commands(strings) {
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
-          printMovement();
+          // printMovement();
           // console.log(board.join('\n') + '\n\n');
           break;
         case 'b':
@@ -146,22 +146,23 @@ function commands(strings) {
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
-          printMovement();
+          // printMovement();
           // console.log(board.join('\n') + '\n\n');
           break;
         case 'l':
           console.log("LEFT");
           turnLeft(rover);
-          printMovement();
+          // printMovement();
           break;
         case 'r':
           log("RIGHT")
           turnRight(rover);
-          printMovement();
+          // printMovement();
           break;
       };
     };
   };
+  printMovement();
 };
 
 function cleanComands(command) { //function to filter strings
@@ -204,4 +205,4 @@ function cleanComands(command) { //function to filter strings
 
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
-commands(`fffflffrf`);
+commands(`flff`);
