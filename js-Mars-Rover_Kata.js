@@ -30,7 +30,7 @@ let board = [
 // console.log("This rover versions default view its East, considering that the increase of value of the vectors X and Y make rover move down instead of up, theres no use in rover to look North cuz he cant move freely in tthis scenario ");
 // ======================
 
-function turnRight(rover) {
+function turnLeft(rover) {
   // log('turnLeft was called!');
   switch (rover.direction) {
     case 'N':
@@ -52,7 +52,7 @@ function turnRight(rover) {
   }
 };
 
-function turnLeft(rover) {
+function turnRight(rover) {
   // console.log('turnRight was called!');
   switch (rover.direction) {
     case 'N':
@@ -80,30 +80,33 @@ function moveForward(rover) {
   let posicionY = posicions[1];
   let posicionX = posicions[0];
   let directionF = JSON.parse(JSON.stringify(rover.direction));
+
   switch (directionF) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
-      posicionY++;
+      posicionY--;
       if (posicionY > 0 && posicionY < 10) {
         rover.position[1] = posicionY
-        console.log("FORWARD, position: " + rover.position);
+        console.log("FORWARD North, position: " + rover.position);
       } else console.log("cant go any further aborting");
 
-
-
-      // log("Rover is now facing South moving Forward at " + rover.position);
       break;
     case 'E': //If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       posicionX++;
       // console.log(posicionX);
       if (posicionX > 0 && posicionX < 10) {
         rover.position[0] = posicionX;
-        console.log("FORWARD, position: " + rover.position);
+        console.log("FORWARD East, position: " + rover.position);
       } else console.log("cant go any further aborting");
       // log("Rover is now facing East moving Forward at " + rover.position);
 
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
-      rover.position[1]--;
+      posicionY++;
+      // console.log(posicionY);
+      if (posicionY > 0 && posicionY < 10) {
+        rover.position[1] = posicionY;
+        console.log("FORWARD South, position: " + rover.position);
+      } else console.log("cant go any further aborting")
       // log("Rover is now facing North moving Forward at " + rover.position);
       break;
     case 'W': //if the rover is facing west and moves forward, we would decrease the rover’s x by 1.
@@ -200,4 +203,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("frfffffff");
+commands("rfffffff");
