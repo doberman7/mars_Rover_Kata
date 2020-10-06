@@ -78,23 +78,23 @@ function moveForward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
       rover.position[1]++;
-      log("Rover is now facing South moving Forward at " + rover.position);
+      // log("Rover is now facing South moving Forward at " + rover.position);
       break;
     case 'E': //If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       // log("------------------")
       // log(rover.travelLog);
       // log("------------------")
       rover.position[0]++;
-      log("Rover is now facing East moving Forward at " + rover.position);
+      // log("Rover is now facing East moving Forward at " + rover.position);
 
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
       rover.position[1]--;
-      log("Rover is now facing North moving Forward at " + rover.position);
+      // log("Rover is now facing North moving Forward at " + rover.position);
       break;
     case 'W': //if the rover is facing west and moves forward, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing West moving Forward at " + rover.position);
+      // log("Rover is now facing West moving Forward at " + rover.position);
       break;
   }
 };
@@ -104,25 +104,25 @@ function moveBackward(rover) {
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves backwards, we would deacrease the rover’s y by 1.
       rover.position[1]--;
-      log(" Rover is now facing South moving backwards at " + rover.position);
+      // log(" Rover is now facing South moving backwards at " + rover.position);
       break;
     case 'E': //If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
       rover.position[0]--;
-      log("Rover is now facing East moving backwards at " + rover.position);
+      // log("Rover is now facing East moving backwards at " + rover.position);
       break;
     case 'S': //If the rover is facing south and moves backwards, we would increase the y by 1.
       rover.position[1]++;
-      log("Rover is now facing North moving backwards at " + rover.position);
+      // log("Rover is now facing North moving backwards at " + rover.position);
       break;
     case 'W': //if the rover is facing west and moves backwards, we would increase the rover’s x by 1.
       rover.position[0]++;
-      log("Rover is now facing West moving backwards at " + rover.position);
+      // log("Rover is now facing West moving backwards at " + rover.position);
       break;
   }
 };
 
 function commands(strings) {
-  // log("Rover first position is looking EAST")
+  log("Rover initial position is [0,0] looking EAST")
   // printMovement();
   let cleanedStrings = cleanComands(strings);
 
@@ -135,30 +135,24 @@ function commands(strings) {
     {
       switch (cleanedStrings[i]) {
         case 'f':
-          console.log("FORWARD");
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
-          // printMovement();
-          // console.log(board.join('\n') + '\n\n');
+          console.log("FORWARD, position: "+ rover.position);
           break;
         case 'b':
-          console.log("BACK");
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
-          // printMovement();
-          // console.log(board.join('\n') + '\n\n');
+          console.log("BACK, position: "+ rover.position);
           break;
         case 'l':
-          console.log("LEFT");
           turnLeft(rover);
-          // printMovement();
+          console.log("LEFT, position: "+ rover.position);
           break;
         case 'r':
-          log("RIGHT")
           turnRight(rover);
-          // printMovement();
+          log("RIGHT, position: "+ rover.position)
           break;
       };
     };
@@ -179,11 +173,9 @@ function cleanComands(command) { //function to filter strings
  printMovement = () => {
    let xEje = rover.position[0];
    let yEje = rover.position[1];
-   // console.log(xEje,yEje);
+   console.log("Last position:");
    console.log(rover.position);
    board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
-
-
    console.log(board.join('\n') + '\n\n');
 
 };
