@@ -75,13 +75,19 @@ function turnLeft(rover) {
 };
 
 function moveForward(rover) {
+  // log('moveForward was called');
   let posicions = JSON.parse(JSON.stringify(rover.position));
   let posicionY = posicions[1];
   let posicionX = posicions[0];
-  switch (rover.direction) {
+  let directionF = JSON.parse(JSON.stringify(rover.direction));
+  switch (directionF) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
+      posicionY++;
+      if (posicionY > 0 && posicionY < 10) {
+        rover.position[1] = posicionY
+        console.log("FORWARD, position: " + rover.position);
+      } else console.log("cant go any further aborting");
 
-      rover.position[1] == posicionY++;
 
 
       // log("Rover is now facing South moving Forward at " + rover.position);
@@ -194,4 +200,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("ffffffffffffffffffffffffffffff");
+commands("frfffffff");
