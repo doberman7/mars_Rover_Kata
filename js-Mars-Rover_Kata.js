@@ -75,16 +75,24 @@ function turnLeft(rover) {
 };
 
 function moveForward(rover) {
+  let posicions = JSON.parse(JSON.stringify(rover.position));
+  let posicionY = posicions[1];
+  let posicionX = posicions[0];
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves forward, we would encrease the rover’s y by 1.
-      rover.position[1]++;
+
+      rover.position[1] == posicionY++;
+
+
       // log("Rover is now facing South moving Forward at " + rover.position);
       break;
     case 'E': //If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
-      // log("------------------")
-      // log(rover.travelLog);
-      // log("------------------")
-      rover.position[0]++;
+      posicionX++;
+      // console.log(posicionX);
+      if (posicionX > 0 && posicionX < 10) {
+        rover.position[0] = posicionX;
+        console.log("FORWARD, position: " + rover.position);
+      } else console.log("cant go any further aborting");
       // log("Rover is now facing East moving Forward at " + rover.position);
 
       break;
@@ -138,21 +146,20 @@ function commands(strings) {
           moveForward(rover);
           let positionsForward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsForward);
-          console.log("FORWARD, position: "+ rover.position);
           break;
         case 'b':
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
-          console.log("BACK, position: "+ rover.position);
+          console.log("BACK, position: " + rover.position);
           break;
         case 'l':
           turnLeft(rover);
-          console.log("LEFT, position: "+ rover.position);
+          console.log("LEFT, position: " + rover.position);
           break;
         case 'r':
           turnRight(rover);
-          log("RIGHT, position: "+ rover.position)
+          log("RIGHT, position: " + rover.position)
           break;
       };
     };
@@ -170,13 +177,14 @@ function cleanComands(command) { //function to filter strings
   return filteredCommands;
 };
 
- printMovement = () => {
-   let xEje = rover.position[0];
-   let yEje = rover.position[1];
-   console.log("Last position:");
-   console.log(rover.position);
-   board[yEje][xEje] = "R";//"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
-   console.log(board.join('\n') + '\n\n');
+printMovement = () => {
+
+  let xEje = JSON.parse(JSON.stringify(rover.position[0]));
+  let yEje = JSON.parse(JSON.stringify(rover.position[1]));
+  console.log("Last position:");
+  console.log(rover.position);
+  board[yEje][xEje] = "R"; //"board" its a graphical representation, in which [x=column,y=row], not a vector of the form [x=row,y=column],
+  console.log(board.join('\n') + '\n\n');
 
 };
 
@@ -186,4 +194,4 @@ function cleanComands(command) { //function to filter strings
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("rfflf");
+commands("ffffffffffffffffffffffffffffff");
