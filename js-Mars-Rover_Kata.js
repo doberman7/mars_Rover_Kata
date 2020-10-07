@@ -124,8 +124,12 @@ function moveBackward(rover) {
   // log('moveBackward was called');
   switch (rover.direction) {
     case 'N': //If the rover is facing north and moves backwards, we would deacrease the rover’s y by 1.
-      rover.position[1]--;
-      // log(" Rover is now facing South moving backwards at " + rover.position);
+      // rover.position[1]--;
+      posicionY++;
+      if (posicionY > 0 && posicionY < 10) {
+        rover.position[1] = posicionY;
+        console.log("North BACKWARD , position: " + rover.position);
+      } else console.log("cant go any further on Y axis, aborting")
       break;
     case 'E': //If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
       rover.position[0]--;
@@ -181,8 +185,8 @@ function commands(strings) {
 };
 
 function cleanComands(command) { //function to filter strings
-  command.toLowerCase(); //make minusc the command
-  let comandSplited = command.split(""); //obtain ary of commands
+  let comandsMin = command.toLowerCase()//make minusc the command
+  let comandSplited = comandsMin.split(""); //obtain ary of commands
   let usefulStrings = ["f", "l", "r", "b"]; //define valid comands
   let filteredCommands = comandSplited.filter((letter) => { //assign filtered letters of the commands
     return usefulStrings.indexOf(letter) > -1; //obtain index of letter found in the usefulStrings Ary
@@ -206,4 +210,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("flrlflrlflrl");
+commands("F");
