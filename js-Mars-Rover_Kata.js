@@ -31,23 +31,22 @@ let board = [
 // ======================
 
 function turnLeft(rover) {
-  log('Left Turn!');
   switch (rover.direction) {
     case 'N':
       rover.direction = "W";
-      // log("Rover is now facing West");
+      log("Left N -> W");
       break;
     case 'E':
       rover.direction = "N";
-      // log("Rover is now facing North");
+      log("Left E -> N");
       break;
     case 'S':
       rover.direction = "E";
-      // log("Rover is now facing East");
+      log("Left S -> E");
       break;
     case 'W':
       rover.direction = "S";
-      // log("Rover is now facing South");
+      log("Left W -> S");
       break;
   }
 };
@@ -121,8 +120,12 @@ function moveForward(rover) {
 };
 
 function moveBackward(rover) {
+  let posicions = JSON.parse(JSON.stringify(rover.position));
+  let posicionY = posicions[1];
+  let posicionX = posicions[0];
+  let directionB = JSON.parse(JSON.stringify(rover.direction));
   // log('moveBackward was called');
-  switch (rover.direction) {
+  switch (directionB) {
     case 'N': //If the rover is facing north and moves backwards, we would deacrease the rover’s y by 1.
       // rover.position[1]--;
       posicionY++;
@@ -210,4 +213,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("F");
+commands("LBBBB");
