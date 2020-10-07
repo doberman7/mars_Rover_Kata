@@ -31,7 +31,7 @@ let board = [
 // ======================
 
 function turnLeft(rover) {
-  // log('turnLeft was called!');
+  log('Left Turn!');
   switch (rover.direction) {
     case 'N':
       rover.direction = "W";
@@ -53,22 +53,25 @@ function turnLeft(rover) {
 };
 
 function turnRight(rover) {
-  // console.log('turnRight was called!');
   switch (rover.direction) {
     case 'N':
       rover.direction = "E";
+      log('Rigth N -> E');
       // log("Rover is now facing East");
       break;
     case 'E':
       rover.direction = "S";
+      log("Rigth E -> S")
       // log("Rover is now facing South");
       break;
     case 'S':
       rover.direction = "W";
+      log("Rigth S -> W")
       // log("Rover is now facing West");
       break;
     case 'W':
       rover.direction = "N";
+      log("Rigth W -> N")
       // log("Rover is now facing North");
       break;
   }
@@ -86,31 +89,32 @@ function moveForward(rover) {
       posicionY--;
       if (posicionY > 0 && posicionY < 10) {
         rover.position[1] = posicionY
-        console.log("FORWARD North, position: " + rover.position);
-      } else console.log("cant go any further aborting");
+        console.log("North FORWARD, position: " + rover.position);
+      } else console.log("cant go any further on Y axis, aborting ");
 
       break;
     case 'E': //If the rover is facing East and moves forward, we would encrease the rover’s y by 1.
       posicionX++;
-      // console.log(posicionX);
       if (posicionX > 0 && posicionX < 10) {
         rover.position[0] = posicionX;
-        console.log("FORWARD East, position: " + rover.position);
-      } else console.log("cant go any further aborting");
-      // log("Rover is now facing East moving Forward at " + rover.position);
+        console.log("East FORWARD , position: " + rover.position);
+      } else console.log("cant go any further on X axis, aborting");
 
       break;
     case 'S': //If the rover is facing south and moves forward, we would decrease the y by 1.
       posicionY++;
-      // console.log(posicionY);
       if (posicionY > 0 && posicionY < 10) {
         rover.position[1] = posicionY;
-        console.log("FORWARD South, position: " + rover.position);
-      } else console.log("cant go any further aborting")
-      // log("Rover is now facing North moving Forward at " + rover.position);
+        console.log("South FORWARD , position: " + rover.position);
+      } else console.log("cant go any further on Y axis, aborting")
       break;
     case 'W': //if the rover is facing west and moves forward, we would decrease the rover’s x by 1.
-      rover.position[0]--;
+      // rover.position[0]--;
+      posicionX--;
+      if (posicionX > 0 && posicionX < 10) {
+        rover.position[0] = posicionX;
+        console.log("West FORWARD , position: " + rover.position);
+      } else console.log("cant go any further on X axis aborting")
       // log("Rover is now facing West moving Forward at " + rover.position);
       break;
   }
@@ -160,15 +164,15 @@ function commands(strings) {
           moveBackward(rover);
           let positionsBackward = JSON.parse(JSON.stringify(rover.position));
           rover.travelLog.push(positionsBackward);
-          console.log("BACK, position: " + rover.position);
+          // console.log("BACK, position: " + rover.position);
           break;
         case 'l':
           turnLeft(rover);
-          console.log("LEFT, position: " + rover.position);
+          // console.log("LEFT, position: " + rover.position);
           break;
         case 'r':
           turnRight(rover);
-          log("RIGHT, position: " + rover.position)
+          // log("RIGHT, position: " + rover.position)
           break;
       };
     };
@@ -187,7 +191,6 @@ function cleanComands(command) { //function to filter strings
 };
 
 printMovement = () => {
-
   let xEje = JSON.parse(JSON.stringify(rover.position[0]));
   let yEje = JSON.parse(JSON.stringify(rover.position[1]));
   console.log("Last position:");
@@ -203,4 +206,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("rfffffff");
+commands("llffffffffffffff");
