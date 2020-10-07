@@ -143,7 +143,7 @@ function moveBackward(rover) {
 };
 
 function commands(strings) {
-  log("Rover initial position is [0,0] looking EAST")
+  log("Rover initial position is "+ rover.position +" looking "+ rover.direction+"ast" )
   // printMovement();
   let cleanedStrings = cleanComands(strings);
 
@@ -206,4 +206,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("llffffffffffffff");
+commands("flrlflrlflrl");
