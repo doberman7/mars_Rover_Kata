@@ -131,12 +131,16 @@ function moveBackward(rover) {
       posicionY++;
       if (posicionY > 0 && posicionY < 10) {
         rover.position[1] = posicionY;
-        console.log("North BACKWARD , position: " + rover.position);
+        console.log("North BACKWARD, position: " + rover.position);
       } else console.log("cant go any further on Y axis, aborting")
       break;
     case 'E': //If the rover is facing East and moves backwards, we would decrease the rover’s x by 1.
-      rover.position[0]--;
-      // log("Rover is now facing East moving backwards at " + rover.position);
+      // rover.position[0]--;
+      posicionX--;
+      if (posicionX > 0 && posicionX < 10) {
+        rover.position[0] = posicionX;
+        console.log("East BACKWARD, position: " + rover.position);
+      } else console.log("cant go any further on X axis aborting")
       break;
     case 'S': //If the rover is facing south and moves backwards, we would increase the y by 1.
       rover.position[1]++;
@@ -213,4 +217,4 @@ printMovement = () => {
 // commands(`ffzzzzrblf`);
 // commands(`ffz340jaddnvsdjvnsvzzzrblf`);
 // commands(`frflfrflfrflfrflfrflfrflfrflfrflfrflfrflfakdjnvsfbsnblfn`);//go last box
-commands("LBBBB");
+commands("fffffbbbbbbbb");
